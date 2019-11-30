@@ -80,7 +80,7 @@ BIOS 中断 INT 13H，AH=02H 从驱动器中读扇区。
 
 DL 中存放的是设备号。由于运行 QEMU 时，命令行参数中指定了 media=disk，是硬盘，编号从 0x80 开始，第一块硬盘的设备号为 0x80。若是软盘，则从 0 开始。
 
-![](.gitbook/assets/mem_layout.jpg)
+![](../.gitbook/assets/mem_layout.jpg)
 
 根据内存分布图可知，0x7e00-0x7fff 这 512 字节的内容是空闲的，可以存放第二扇区。
 

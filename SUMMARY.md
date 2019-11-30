@@ -4,9 +4,9 @@
 
 ## 基础实验 <a id="basic"></a>
 
-* [四行代码无限重启](infinite-reboot.md)
-* [输出字符串](print-string.md)
-* [输出 BCD 码](print-bcd.md)
+* [四行代码无限重启](basic/infinite-reboot.md)
+* [输出字符串](basic/print-string.md)
+* [输出 BCD 码](basic/print-bcd.md)
 
 ## 微机原理实验 <a id="microcomputer"></a>
 

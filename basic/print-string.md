@@ -6,7 +6,7 @@
 
 在屏幕上输出 Hello world。
 
-![](.gitbook/assets/output_string.jpg)
+![](../.gitbook/assets/output_string.jpg)
 
 思路：
 
