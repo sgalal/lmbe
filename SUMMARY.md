@@ -1,8 +1,12 @@
 # Table of contents
 
 * [前言](README.md)
-* [开发环境配置](configuration.md)
-* [基础实验](prerequisites.md)
+
+## 基础实验 <a id="basic"></a>
+
+* [四行代码无限重启](infinite-reboot.md)
+* [输出字符串](print-string.md)
+* [输出 BCD 码](print-bcd.md)
 
 ## 微机原理实验 <a id="microcomputer"></a>
 
