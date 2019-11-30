@@ -199,3 +199,80 @@ fill:
 
 Bochs 调试方法
 
+### 附录
+
+```text
+[org    0x7c00]
+
+start:
+
+    ; Add scripts here
+
+fin:
+    hlt
+    jmp    fin
+
+signature:
+    %if    $-$$>510
+        %fatal    "stage1 code exceed 512 bytes."
+    %endif
+
+    times    510-($-$$) \
+        db    0
+    db    0x55,0xaa
+```
+
+Makefile
+
+```text
+main.bin : main.asm Makefile
+    nasm -fbin main.asm -o main.bin -l main.lst
+
+run : main.bin
+    qemu-system-x86_64 -soundhw all -rtc base=localtime -drive file=main.bin,format=raw,index=0,media=disk
+
+dmp : main.bin
+    objdump -M intel -b binary -m i8086 -D main.bin
+```
+
+#### 基本函数实现
+
+**扬声器发声**
+
+beep
+
+```text
+; Make a beep sound
+beep:
+    pusha
+
+    mov    al,0xb6
+    out    0x43,al          ; 8254 CNT2
+    mov    ax,0x0533        ; Sound frequency 896 Hz
+    out    0x42,al
+    mov    al,ah
+    out    0x42,al
+
+    in    al,0x61          ; 8255 PB
+    mov    ah,al
+    or    al,0x03          ; Enable 8254 CNT2
+    out    0x61,al
+
+    mov    cx,0x0055        ; Last for some time
+    loop2:
+        push    cx
+        mov    cx,0xffff
+        loop1:
+            nop
+            loop    loop1
+        pop    cx
+        loop    loop2
+
+    mov    al,ah
+    out    0x61,al          ; Restore 8255 PB
+    popa
+    ret
+```
+
+#### 
+
